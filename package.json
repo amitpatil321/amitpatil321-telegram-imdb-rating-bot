@@ -1,0 +1,16 @@
+{
+  "name": "movie-rating-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram which returns movie info aong with IMDB rating",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --env-file=.env index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Amit",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "express": "^4.21.1"
+  }
+}
