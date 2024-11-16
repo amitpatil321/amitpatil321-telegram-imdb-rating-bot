@@ -5,6 +5,8 @@ async function handler(req, method) {
   if (body) {
     const messageObj = body.message;
     await handleMessage(messageObj);
+  } else {
+    console.log("Message has no body, Aborting!");
   }
   return;
 }
