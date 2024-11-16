@@ -3,14 +3,13 @@ const movieController = require("../../controller/lib/moviesDB");
 
 async function handleMessage(messageObj) {
   const messageText = messageObj?.text || "";
-  console.log(messageText);
-
   // if its a bot command
   if (messageText.charAt(0) === "/") {
     const command = messageText.substr(1);
     this.handleCommands(messageObj, command);
   } else {
     // else its a movie name
+    console.log(messageObj);
     movieController.handleMovie(messageObj);
   }
 }

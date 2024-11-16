@@ -9,14 +9,11 @@ async function handleMovie(messageObj) {
   if (movieName) {
     try {
       const movieInfo = await moviesApi.getMovie(movieName);
-      console.log(
-        "movieInfo",
-        movieInfo?.status,
-        movieInfo?.data?.total_results
-      );
-
+      console.log("0");
       if (movieInfo?.status === 200 && movieInfo?.data?.total_results) {
+        console.log("1");
         if (movieInfo?.data?.total_results > 1) {
+          console.log("2");
           const movieOptions = movieInfo.data.results
             .filter((movie) => movie.title && movie.release_date)
             .slice(0, 5)
@@ -28,6 +25,7 @@ async function handleMovie(messageObj) {
             ]);
 
           if (movieOptions.length > 0) {
+            console.log("3");
             bot.sendMessage(
               messageObj.chat.id,
               "Which one did you have in mind?",
@@ -39,10 +37,12 @@ async function handleMovie(messageObj) {
             );
           }
         } else {
+          console.log("4");
           // Single movie found
           await utils.sendDetails(messageObj, movieInfo.data.results[0]);
         }
       } else {
+        console.log("5");
         bot.sendMessage(messageObj.chat.id, "No movies found.");
       }
     } catch (error) {
