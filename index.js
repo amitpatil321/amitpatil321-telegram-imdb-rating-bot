@@ -6,11 +6,11 @@ const port = 3000;
 app.use(express.json());
 
 app.post("*", async (req, res) => {
-  res.send(await handler(req));
+  res.send(await handler(req, res));
 });
 
 app.get("*", async (req, res) => {
-  res.send(await handler(req));
+  res.send(await handler(req, res));
 });
 
 app.listen(port, () => {

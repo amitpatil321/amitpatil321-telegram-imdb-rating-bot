@@ -13,24 +13,28 @@ const { handleMessage } = require("./lib/telegram");
 // }
 
 async function handler(req, res) {
+  // Restrict to POST requests
   if (req.method !== "POST") {
-    console.log(`Invalid request method: ${req.method}`);
-    res.status(405).send("Method Not Allowed");
-    return;
+    console.log(`Invalid request method`);
   }
 
   const { body } = req;
+
+  // Check for message body
   if (body && body.message) {
     try {
+      // Example: Uncomment and use your handler logic here
       await handleMessage(body.message);
-      res.status(200).send("Message processed");
+      // return res
+      //   .status(200)
+      //   .send({ message: "Message processed successfully" });
     } catch (err) {
-      console.error("Error handling message:", err);
-      res.status(500).send("Internal Server Error");
+      console.error("Error handling message:", err.message); // Log error message
+      // return res.status(500).send({ error: "Internal Server Error" });
     }
   } else {
     console.log("Message body is missing or empty, Aborting!");
-    res.status(400).send("Bad Request");
+    // return res.status(400).send({ error: "Bad Request" });
   }
 }
 
