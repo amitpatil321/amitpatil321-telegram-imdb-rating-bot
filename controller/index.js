@@ -16,23 +16,22 @@ async function handler(req, res) {
   // Restrict to POST requests
   if (req.method !== "POST") {
     console.log(`Invalid request method`);
-  } else {
-    console.log("All good");
   }
 
-  // const { body } = req;
+  const { body } = req;
 
-  // if (body && body.message) {
-  //   try {
-  //     await handleMessage(body.message);
-  //   } catch (err) {
-  //     console.error("Error handling message:", err.message); // Log error message
-  //     return res.status(500).send({ error: "Internal Server Error" });
-  //   }
-  // } else {
-  //   console.log("Message body is missing or empty, Aborting!");
-  //   return res.status(400).send({ error: "Bad Request" });
-  // }
+  if (body && body.message) {
+    console.log("Has body");
+    // try {
+    //   await handleMessage(body.message);
+    // } catch (err) {
+    //   console.error("Error handling message:", err.message); // Log error message
+    //   return res.status(500).send({ error: "Internal Server Error" });
+    // }
+  } else {
+    console.log("Message body is missing or empty, Aborting!");
+    return res.status(400).send({ error: "Bad Request" });
+  }
 }
 
 module.exports = { handler };
