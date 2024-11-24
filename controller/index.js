@@ -13,10 +13,9 @@ const { handleMessage } = require("./lib/telegram");
 // }
 
 async function handler(req, res) {
-  // Restrict to POST requests
   if (req.method !== "POST") {
     console.log(`Invalid request method`);
-  }
+  } else console.log("All good");
 
   const { body } = req;
 
