@@ -28,22 +28,21 @@ async function handleMovie(messageObj) {
           if (movieOptions.length > 0) {
             console.log("3");
             try {
-              console.log("Sending list...");
-              // bot.sendMessage(
-              //   messageObj.chat.id,
-              //   "Which one did you have in mind?",
-              //   {
-              //     reply_markup: {
-              //       inline_keyboard: movieOptions, // Spread not needed if movieOptions is already an array of arrays
-              //     },
-              //   }
-              // );
+              bot.sendMessage(
+                messageObj.chat.id,
+                "Which one did you have in mind?",
+                {
+                  reply_markup: {
+                    inline_keyboard: movieOptions, // Spread not needed if movieOptions is already an array of arrays
+                  },
+                }
+              );
             } catch (err) {
               console.error("Error fetching movie:", error);
-              // bot.sendMessage(
-              //   messageObj.chat.id,
-              //   "Failed to fetch movie information."
-              // );
+              bot.sendMessage(
+                messageObj.chat.id,
+                "Failed to fetch movie information."
+              );
             }
           }
         } else {
