@@ -6,7 +6,7 @@ const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 
 async function handleMovie(messageObj) {
   const movieName = messageObj?.text || "";
-  console.log("movieName", movieName, messageObj);
+  // console.log("movieName", movieName, messageObj);
   if (movieName) {
     try {
       const movieInfo = await moviesApi.getMovie(movieName);
