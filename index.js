@@ -1,7 +1,13 @@
 const TelegramBot = require("node-telegram-bot-api");
 
-// Create a bot instance and set it to poll for updates
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
+
+bot.onText(/\/start/, (msg) => {
+  bot.sendMessage(
+    chatId,
+    `Hello...${msg.from.first_name || "there"}! You said: "${msg.text}"`
+  );
+});
 
 bot.on("message", (msg) => {
   const chatId = msg.chat.id; // Get the chat ID of the message sender
