@@ -1,20 +1,18 @@
-const express = require("express");
-const { handler } = require("./controller/index");
-const app = express();
-const port = 3000;
+const TelegramBot = require("node-telegram-bot-api");
 
-app.use(express.json());
-app.use(express.static("public"));
+// Create a bot instance and set it to poll for updates
+const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 
-app.post("*", async (req, res) => {
-  res.send(await handler(req, res));
+bot.on("message", (msg) => {
+  const chatId = msg.chat.id; // Get the chat ID of the message sender
+  const userMessage = msg.text; // Get the text sent by the user
+
+  console.log(`Received message: "${userMessage}" from chat ID: ${chatId}`);
+
+  bot.sendMessage(
+    chatId,
+    `Hello, ${msg.from.first_name || "there"}! You said: "${userMessage}"`
+  );
 });
 
-// app.get("*", async (req, res) => {
-//   console.log("get", req.body);
-//   // res.send(await handler(req, res));
-// });
-
-app.listen(port, () => {
-  console.log(`Movie rating app running on port: ${port}`);
-});
+console.log("Bot is running...");
