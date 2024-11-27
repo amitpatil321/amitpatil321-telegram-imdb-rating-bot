@@ -1,13 +1,13 @@
 const movieUtils = require("./utils/movie.utils");
+const bot = require("./utils/bot.utils");
 
-const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 
 const app = express();
 app.use(express.json());
 
-const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
-const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/`;
+// const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/`;
+const WEBHOOK_URL = `https://54bc-2a09-bac1-36a0-f0-00-3b7-18.ngrok-free.app/`;
 
 // Set the webhook
 bot.setWebHook(WEBHOOK_URL);
@@ -17,24 +17,11 @@ app.post("/", (req, res) => {
   res.sendStatus(200);
 });
 
-// bot.onText(/\/start/, (msg) => {
-//   const chatId = msg.chat.id;
-//   bot.sendMessage(
-//     chatId,
-//     `${msg.from.first_name || "there"}! You said: "${msg.text}"`
-//   );
-// });
-
-bot.on("message", (msg) => {
+bot.on("message", async (msg) => {
   const chatId = msg.chat.id; // Get the chat ID of the message sender
   const userMessage = msg.text; // Get the text sent by the user
 
-  movieUtils.handleCommands(msg);
-
-  bot.sendMessage(
-    chatId,
-    `Hello, ${msg.from.first_name || "there"}! You said: "${userMessage}"`
-  );
+  await movieUtils.handleCommands(msg);
 });
 
 console.log("Bot is running...");
