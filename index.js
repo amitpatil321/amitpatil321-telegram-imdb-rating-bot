@@ -8,7 +8,7 @@ const TOKEN = process.env.TELEGRAM_TOKEN;
 const bot = new TelegramBot(TOKEN);
 
 // Replace with your Vercel deployment URL
-const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/api/bot`;
+const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/`;
 
 // Set the webhook
 bot.setWebHook(WEBHOOK_URL);
