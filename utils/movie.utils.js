@@ -2,7 +2,7 @@ const moviesApi = require("../api/movies.api");
 
 module.exports = {
   async handleCommands(messageObj) {
-    const chatId = msg.chat.id;
+    const chatId = messageObj.chat.id;
     const movieName = messageObj?.text || "";
     const movieInfo = await moviesApi.getMovie(movieName);
     console.log("0");
