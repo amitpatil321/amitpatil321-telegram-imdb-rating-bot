@@ -3,16 +3,22 @@ const bot = require("./bot.utils");
 
 module.exports = {
   async handleCommands(messageObj) {
+    const chatId = messageObj.chat.id;
     const movieName = messageObj?.text || "";
     const movieInfo = await moviesApi.getMovie(movieName);
-    if (movieInfo?.status === 200 && movieInfo?.data?.total_results) {
-      if (movieInfo?.data?.total_results > 1) {
+    if (movieInfo?.status === 200) {
+      if (movieInfo?.data?.total_results == 0) {
+        console.log("Aaa");
+        bot.sendMessage(chatId, "No movie found with this name!");
+      } else if (movieInfo?.data?.total_results > 1) {
         const movieOptions = movieInfo.data.results
           .filter((movie) => movie.title && movie.release_date)
           .slice(0, 5)
           .map((movie) => [
             {
-              text: `${movie.title} (${movie.release_date.split("-")[0]})`,
+              text: `${movie.title} (${
+                movie.release_date ? movie.release_date.split("-")[0] : "-"
+              })`,
               callback_data: movie.id.toString(),
             },
           ]);
@@ -42,10 +48,18 @@ module.exports = {
   async sendMovieDetails(movie, messageObj) {
     const chatId = messageObj.chat.id;
     let messageText =
-      `*Title:* ${movie?.original_title}\n` +
-      `*IMDb Rating:* ${movie?.vote_average.toFixed(1) || "NA"}\n` +
-      `*Release Date:* ${movie.release_date.split("-")[0]}\n` +
-      `*Genres:* ${movie?.genres?.map((each) => each?.name).join(", ")}`;
+      `*Title:* ${movie?.original_title || "N/A"}\n` +
+      `*IMDb Rating:* ${
+        movie?.vote_average ? movie.vote_average.toFixed(1) : "NA"
+      }\n` +
+      `*Release Date:* ${
+        movie?.release_date ? movie.release_date.split("-")[0] : "Unknown"
+      }\n` +
+      `*Genres:* ${
+        movie?.genres?.length
+          ? movie.genres.map((each) => each?.name).join(", ")
+          : "-"
+      }`;
     bot.sendMessage(chatId, messageText, {
       parse_mode: "Markdown",
     });
@@ -55,17 +69,3 @@ module.exports = {
     }
   },
 };
-
-bot.on("callback_query", async (callbackQuery) => {
-  const { data: movieId, message } = callbackQuery;
-  try {
-    const movieDetail = await moviesApi.getMovieById(movieId);
-    const movie = movieDetail.data;
-    await module.exports.sendMovieDetails(movie, message);
-  } catch (error) {
-    console.error("Error fetching movie details:", error);
-    await bot.sendMessage(chatId, "Failed to fetch movie details!");
-  }
-
-  bot.answerCallbackQuery(callbackQuery.id);
-});
