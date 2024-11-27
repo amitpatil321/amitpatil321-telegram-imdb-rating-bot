@@ -10,6 +10,9 @@ bot.onText(/\/start/, (msg) => {
 });
 
 bot.on("message", (msg) => {
+  if (userMessage.startsWith("/start")) {
+    return;
+  }
   const chatId = msg.chat.id; // Get the chat ID of the message sender
   const userMessage = msg.text; // Get the text sent by the user
 
