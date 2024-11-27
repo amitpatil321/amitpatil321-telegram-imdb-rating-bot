@@ -5,6 +5,16 @@ const app = express();
 app.use(express.json());
 
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
+const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/`;
+
+// Set the webhook
+bot.setWebHook(WEBHOOK_URL);
+
+app.post("/", (req, res) => {
+  console.log("Request received: " + JSON.stringify(req));
+  bot.processUpdate(req.body); // Pass incoming updates to the bot
+  res.sendStatus(200);
+});
 
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(
