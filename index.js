@@ -1,3 +1,5 @@
+const movieUtils = require("./utils/movie.utils");
+
 const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 
@@ -15,19 +17,19 @@ app.post("/", (req, res) => {
   res.sendStatus(200);
 });
 
-bot.onText(/\/start/, (msg) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(
-    chatId,
-    `${msg.from.first_name || "there"}! You said: "${msg.text}"`
-  );
-});
+// bot.onText(/\/start/, (msg) => {
+//   const chatId = msg.chat.id;
+//   bot.sendMessage(
+//     chatId,
+//     `${msg.from.first_name || "there"}! You said: "${msg.text}"`
+//   );
+// });
 
 bot.on("message", (msg) => {
   const chatId = msg.chat.id; // Get the chat ID of the message sender
   const userMessage = msg.text; // Get the text sent by the user
 
-  console.log(`Received message: "${userMessage}" from chat ID: ${chatId}`);
+  movieUtils.handleCommands(msg);
 
   bot.sendMessage(
     chatId,
