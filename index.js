@@ -11,7 +11,7 @@ const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/`;
 bot.setWebHook(WEBHOOK_URL);
 
 app.post("/", (req, res) => {
-  console.log("Request received: " + JSON.stringify(req));
+  console.log("Request received: " + JSON.stringify(req.body));
   bot.processUpdate(req.body); // Pass incoming updates to the bot
   res.sendStatus(200);
 });
