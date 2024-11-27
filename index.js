@@ -5,7 +5,7 @@ const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(
     chatId,
-    `Hello...${msg.from.first_name || "there"}! You said: "${msg.text}"`
+    `${msg.from.first_name || "there"}! You said: "${msg.text}"`
   );
 });
 
