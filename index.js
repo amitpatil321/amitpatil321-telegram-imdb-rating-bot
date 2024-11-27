@@ -1,33 +1,24 @@
 const TelegramBot = require("node-telegram-bot-api");
-const express = require("express");
 
-const app = express();
-app.use(express.json()); // To parse JSON from Telegram webhook requests
+const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 
-const TOKEN = process.env.TELEGRAM_TOKEN;
-const bot = new TelegramBot(TOKEN);
-
-// Replace with your Vercel deployment URL
-const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/`;
-
-// Set the webhook
-bot.setWebHook(WEBHOOK_URL);
-
-app.post("/api/bot", (req, res) => {
-  bot.processUpdate(req.body); // Pass incoming updates to the bot
-  res.sendStatus(200);
-});
-
-// Define bot behavior
 bot.onText(/\/start/, (msg) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, `Hello, ${msg.from.first_name || "there"}!`);
+  bot.sendMessage(
+    chatId,
+    `Hello...${msg.from.first_name || "there"}! You said: "${msg.text}"`
+  );
 });
 
 bot.on("message", (msg) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, `You said: "${msg.text}"`);
+  const chatId = msg.chat.id; // Get the chat ID of the message sender
+  const userMessage = msg.text; // Get the text sent by the user
+
+  console.log(`Received message: "${userMessage}" from chat ID: ${chatId}`);
+
+  bot.sendMessage(
+    chatId,
+    `Hello, ${msg.from.first_name || "there"}! You said: "${userMessage}"`
+  );
 });
 
-// Export the app for Vercel
-module.exports = app;
+console.log("Bot is running...");
