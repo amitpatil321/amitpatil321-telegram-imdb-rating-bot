@@ -7,7 +7,9 @@ module.exports = {
       console.log("1");
       const chatId = messageObj.chat.id;
       const movieName = messageObj?.text || "";
+      console.log(chatId, movieName);
       const movieInfo = await moviesApi.getMovie(movieName);
+      console.log(movieInfo?.data?.total_results);
       if (movieInfo?.status === 200) {
         console.log("2");
         if (movieInfo?.data?.total_results == 0) {
