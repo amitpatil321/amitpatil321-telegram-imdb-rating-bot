@@ -7,7 +7,8 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/`;
+// const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/`;
+const WEBHOOK_URL = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/setWebhook?url=${process.env.VERCEL_URL}`;
 // const WEBHOOK_URL = `https://54bc-2a09-bac1-36a0-f0-00-3b7-18.ngrok-free.app/`;
 
 // Set the webhook

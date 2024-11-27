@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --env-file=.env index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "push": "git add . && git commit -m \"fix: using telegram bot api\" &&  git push -u origin main"
+    "push": "git add . && git commit -m \"fix: testing on vercel\" &&  git push -u origin main"
   },
   "author": "Amit",
   "license": "ISC",
