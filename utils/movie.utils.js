@@ -3,14 +3,16 @@ const bot = require("./bot.utils");
 
 module.exports = {
   async handleCommands(messageObj) {
+    console.log("1");
     const chatId = messageObj.chat.id;
     const movieName = messageObj?.text || "";
     const movieInfo = await moviesApi.getMovie(movieName);
     if (movieInfo?.status === 200) {
+      console.log("2");
       if (movieInfo?.data?.total_results == 0) {
-        console.log("Aaa");
         bot.sendMessage(chatId, "No movie found with this name!");
       } else if (movieInfo?.data?.total_results > 1) {
+        console.log("3");
         const movieOptions = movieInfo.data.results
           .filter((movie) => movie.title && movie.release_date)
           .slice(0, 5)
@@ -40,9 +42,13 @@ module.exports = {
           );
         }
       } else {
+        console.log("4");
         let movie = movieInfo.data.results[0];
         this.sendMovieDetails(movie, messageObj);
       }
+    } else {
+      console.log("5");
+      bot.sendMessage(chatId, "Request failed please try again!");
     }
   },
   async sendMovieDetails(movie, messageObj) {
