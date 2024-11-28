@@ -4,6 +4,7 @@ const CONSTANTS = require("../config/constants");
 function moviesApi() {
   return {
     getMovie(params) {
+      console.log("moviesApi.getMovie", params);
       try {
         return axios.get(
           `${CONSTANTS.MOVIE_API_BASE}search/movie?query=${params}&api_key=${process.env.TMDB_API_KEY}`
