@@ -2,7 +2,7 @@ const axios = require("axios");
 const CONSTANTS = require("../config/constants");
 
 const axiosInstance = axios.create({
-  timeout: 20000, // 10 seconds
+  timeout: 10000,
 });
 
 function moviesApi() {
@@ -28,5 +28,4 @@ function moviesApi() {
   };
 }
 
-// Immediately invoke getAxiosInstance to export the instance with get and post methods
 module.exports = moviesApi();
