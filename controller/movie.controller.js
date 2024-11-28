@@ -1,8 +1,6 @@
 const moviesApi = require("../api/movies.api");
-const bot = require("./bot.utils");
+const bot = require("./bot.controller");
 const languages = require("../config/languages");
-
-console.log(languages.filter((each) => each.iso_639_1 === "hi").english_name);
 
 module.exports = {
   async handleCommands(messageObj) {
@@ -78,7 +76,8 @@ module.exports = {
         movie?.genres?.length
           ? movie.genres.map((each) => each?.name).join(", ")
           : "-"
-      }`;
+      }\n` +
+      `*Plot:* ${movie?.overview}`;
     bot.sendMessage(chatId, messageText, {
       parse_mode: "Markdown",
     });
