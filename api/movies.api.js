@@ -2,7 +2,7 @@ const axios = require("axios");
 const CONSTANTS = require("../config/constants");
 
 const axiosInstance = axios.create({
-  timeout: 10000, // 10 seconds
+  timeout: 20000, // 10 seconds
 });
 
 function moviesApi() {
