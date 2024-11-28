@@ -3,7 +3,7 @@ const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 
 (async () => {
   try {
-    const result = await bot.deleteWebhook();
+    const result = await bot.deleteWebHook();
     console.log("Webhook deleted:", result);
     bot.startPolling();
   } catch (error) {
