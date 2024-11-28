@@ -1,18 +1,34 @@
 const axios = require("axios");
 const CONSTANTS = require("../config/constants");
 
+const axiosInstance = axios.create({
+  timeout: 10000, // 10 seconds
+});
+
 function moviesApi() {
   return {
-    getMovie(params) {
+    async getMovie(params) {
       console.log("moviesApi.getMovie", params);
       try {
         console.log("inside try");
         console.log(
           `${CONSTANTS.MOVIE_API_BASE}search/movie?query=${params}&api_key=${process.env.TMDB_API_KEY}`
         );
-        return axios.get(
+        return axiosInstance.get(
           `${CONSTANTS.MOVIE_API_BASE}search/movie?query=${params}&api_key=${process.env.TMDB_API_KEY}`
         );
+        // const url = `${CONSTANTS.MOVIE_API_BASE}search/movie?query=${params}&api_key=${process.env.TMDB_API_KEY}`;
+        // try {
+        //   const response = await fetch(url);
+        //   if (!response.ok) {
+        //     throw new Error(`Response status: ${response.status}`);
+        //   }
+
+        //   const json = await response.json();
+        //   console.log(json);
+        // } catch (error) {
+        //   console.error(error.message);
+        // }
       } catch (error) {
         console.log("inside catch");
         return Promise.reject(error);
@@ -20,7 +36,7 @@ function moviesApi() {
     },
     getMovieById(id) {
       try {
-        return axios.get(
+        return axiosInstance.get(
           `${CONSTANTS.MOVIE_API_BASE}movie/${id}?api_key=${process.env.TMDB_API_KEY}`
         );
       } catch (error) {
