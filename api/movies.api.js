@@ -6,11 +6,12 @@ function moviesApi() {
     getMovie(params) {
       console.log("moviesApi.getMovie", params);
       try {
+        console.log("inside try");
         return axios.get(
           `${CONSTANTS.MOVIE_API_BASE}search/movie?query=${params}&api_key=${process.env.TMDB_API_KEY}`
         );
       } catch (error) {
-        console.log(error);
+        console.log("inside catch");
         return Promise.reject(error);
       }
     },
