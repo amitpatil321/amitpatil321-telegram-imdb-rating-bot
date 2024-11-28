@@ -9,7 +9,7 @@ module.exports = {
       const movieName = messageObj?.text || "";
       console.log(chatId, movieName);
       const movieInfo = await moviesApi.getMovie(movieName);
-      console.log(movieInfo?.data?.total_results);
+      console.log("total: ", movieInfo?.data?.total_results);
       if (movieInfo?.status === 200) {
         console.log("2");
         if (movieInfo?.data?.total_results == 0) {
@@ -54,6 +54,7 @@ module.exports = {
         bot.sendMessage(chatId, "Request failed please try again!");
       }
     } catch (error) {
+      const chatId = messageObj.chat.id;
       console.log(error);
       bot.sendMessage(chatId, "Unexpected error, Please try again!");
     }
