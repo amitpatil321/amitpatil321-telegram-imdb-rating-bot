@@ -1,4 +1,4 @@
-const moviesController = require("../controller/movie.controller");
+const moviesController = require("./controller/movie.controller");
 const bot = require("./controller/bot.controller");
 const moviesApi = require("./api/movies.api");
 const packageInfo = require("./package.json");
