@@ -8,7 +8,11 @@ module.exports = {
       const chatId = messageObj.chat.id;
       const movieName = messageObj?.text || "";
       console.log(chatId, movieName);
-      const movieInfo = await moviesApi.getMovie(movieName);
+      // const movieInfo = await moviesApi.getMovie(movieName);
+      const movieInfo = await moviesApi.getMovie(movieName).catch((error) => {
+        console.error("Error fetching movie info:", error.message || error);
+        throw error; // Rethrow if needed
+      });
       console.log("total: ", movieInfo?.data?.total_results);
       if (movieInfo?.status === 200) {
         console.log("2");
