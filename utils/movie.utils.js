@@ -4,10 +4,8 @@ const bot = require("./bot.utils");
 module.exports = {
   async handleCommands(messageObj) {
     try {
-      console.log("1");
       const chatId = messageObj.chat.id;
       const movieName = messageObj?.text || "";
-      console.log(chatId, movieName);
       // const movieInfo = await moviesApi.getMovie(movieName);
       const movieInfo = await moviesApi.getMovie(movieName).catch((error) => {
         console.error("Error fetching movie info:", error.message || error);
@@ -27,7 +25,7 @@ module.exports = {
               {
                 text: `${movie.title} (${
                   movie.release_date ? movie.release_date.split("-")[0] : "-"
-                })`,
+                }) - (${movie.original_language || ""})`,
                 callback_data: movie.id.toString(),
               },
             ]);

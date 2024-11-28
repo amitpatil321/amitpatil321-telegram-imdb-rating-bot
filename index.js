@@ -8,10 +8,9 @@ const app = express();
 app.use(express.json());
 
 // const WEBHOOK_URL = `https://${process.env.VERCEL_URL}/`;
-const WEBHOOK_URL = `https://54bc-2a09-bac1-36a0-f0-00-3b7-18.ngrok-free.app/`;
-console.log(WEBHOOK_URL);
+// const WEBHOOK_URL = `https://54bc-2a09-bac1-36a0-f0-00-3b7-18.ngrok-free.app/`;
 
-bot.setWebHook(WEBHOOK_URL);
+// bot.setWebHook(WEBHOOK_URL);
 
 app.post("/", (req, res) => {
   bot.processUpdate(req.body);
