@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node --env-file=.env index.js",
+    "watch": "nodemon --env-file=.env index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "push": "git add . && git commit -m \"fix: testing on vercel\" &&  git push -u origin main"
   },

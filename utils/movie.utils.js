@@ -1,5 +1,8 @@
 const moviesApi = require("../api/movies.api");
 const bot = require("./bot.utils");
+const languages = require("../config/languages");
+
+console.log(languages.filter((each) => each.iso_639_1 === "hi").english_name);
 
 module.exports = {
   async handleCommands(messageObj) {
@@ -14,14 +17,23 @@ module.exports = {
           const movieOptions = movieInfo.data.results
             .filter((movie) => movie.title && movie.release_date)
             .slice(0, 5)
-            .map((movie) => [
-              {
-                text: `${movie.title} (${
-                  movie.release_date ? movie.release_date.split("-")[0] : "-"
-                }) - (${movie.original_language || ""})`,
-                callback_data: movie.id.toString(),
-              },
-            ]);
+            .map(({ title, release_date, original_language, id }) => {
+              const language = languages?.find(
+                (lang) => lang.iso_639_1 === original_language
+              );
+              const languageName = language
+                ? language.english_name
+                : original_language || "";
+
+              return [
+                {
+                  text: `${title} (${
+                    release_date ? release_date.split("-")[0] : "-"
+                  }) - (${languageName})`,
+                  callback_data: id.toString(),
+                },
+              ];
+            });
           try {
             bot.sendMessage(
               messageObj.chat.id,
