@@ -7,6 +7,9 @@ function moviesApi() {
       console.log("moviesApi.getMovie", params);
       try {
         console.log("inside try");
+        console.log(
+          `${CONSTANTS.MOVIE_API_BASE}search/movie?query=${params}&api_key=${process.env.TMDB_API_KEY}`
+        );
         return axios.get(
           `${CONSTANTS.MOVIE_API_BASE}search/movie?query=${params}&api_key=${process.env.TMDB_API_KEY}`
         );
