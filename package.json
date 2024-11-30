@@ -1,13 +1,13 @@
 {
   "name": "movie-rating-telegram-bot",
   "version": "1.0.0",
-  "description": "Telegram which returns movie info aong with IMDB rating",
+  "description": "Telegram bot which returns movie info along with IMDB rating",
   "main": "index.js",
   "scripts": {
     "start": "node --env-file=.env index.js",
     "watch": "nodemon --env-file=.env index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "push": "git add . && git commit -m \"fix: testing on vercel\" &&  git push -u origin main"
+    "release": "semantic-release"
   },
   "author": "Amit",
   "license": "ISC",
@@ -15,5 +15,8 @@
     "axios": "^1.7.7",
     "express": "^4.21.1",
     "node-telegram-bot-api": "^0.66.0"
+  },
+  "devDependencies": {
+    "standard-version": "^9.5.0"
   }
 }

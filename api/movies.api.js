@@ -19,7 +19,7 @@ function moviesApi() {
     getMovieById(id) {
       try {
         return axiosInstance.get(
-          `${CONSTANTS.MOVIE_API_BASE}movie/${id}?api_key=${process.env.TMDB_API_KEY}`
+          `${CONSTANTS.MOVIE_API_BASE}movie/${id}?api_key=${process.env.TMDB_API_KEY}&append_to_response=images,videos`
         );
       } catch (error) {
         return Promise.reject(error);
