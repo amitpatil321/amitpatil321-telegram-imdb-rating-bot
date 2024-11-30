@@ -59,7 +59,6 @@ bot.on("callback_query", async (callbackQuery) => {
         if (trailers.length > 0) {
           for (const trailer of trailers) {
             await bot.sendMessage(chatId, `🎥 Video: \n` + getTrailer(trailer));
-            await delay(2000);
           }
         } else await bot.sendMessage(chatId, "No trailers available!");
         break;
