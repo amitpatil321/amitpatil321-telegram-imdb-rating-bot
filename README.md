@@ -1,6 +1,6 @@
 # Movie Info Telegram Bot
 <p align="center">
-  <img width="150" height="150" src="logo.png">
+  <img height="150" src="logo.png">
 </p>
 <p align="center">
   <strong>Find information about movies 🎬</strong>
@@ -20,9 +20,9 @@
 
 Looking for movie information on the go?
 
-Meet Movie Finder, a [Telegram](https://telegram.org/) bot that helps you quickly check basic movie information, such as IMDB rating, release date, genre, plot, images and videos!
+Meet Meet [@movie_info2_bot](http://telegram.me/movie_info2_bot), a [Telegram](https://telegram.org/) bot that helps you quickly check basic movie information, such as IMDB rating, release date, genre, plot, images and videos!
 
-Meet [@movie_info2_bot](http://telegram.me/movie_info2_bot)
+
 
 ## Tech Stack 🛠
 The bot is built with [Node.js](https://nodejs.org) and [node-telegram-bot-api](https://github.com/yagop/node-telegram-bot-api) a module to interact with the official Telegram Bot Api.
@@ -44,7 +44,7 @@ The project structure is organized as follows:
 - `utils/movie.utils.js`: This file contains utility functions for the Telegram bot, which help structure and format the data received from the API into user-friendly responses.
 
 ## Setup Instructions 🛠️
-To deploy the Movie Finder Bot on your Telegram account, follow these steps:
+To deploy the Bot on your Telegram account, follow these steps:
 
 1. **Clone the Repository**: Clone this repository to your local machine using the following command:
 ```bash
@@ -75,7 +75,7 @@ $ npm run start
 
 
 ## Contribution Guidelines 🤝
-Contributions to the Movie Finder Bot project are welcome and encouraged. If you'd like to contribute, please follow these guidelines:
+Contributions to the project are welcome and encouraged. If you'd like to contribute, please follow these guidelines:
 
 - **Fork the Repository**: Fork this repository to your GitHub account.
 - **Create a Branch**: Create a new branch for your contribution and switch to it.
@@ -84,7 +84,7 @@ Contributions to the Movie Finder Bot project are welcome and encouraged. If you
 - **Submit a Pull Request**: Once you're satisfied with your changes, submit a pull request explaining the purpose of your contribution.
 
 ## Support 🤔
-For any questions, issues, or feedback related to the Movie Finder Bot, please [open an issue](https://github.com/LorenzoLancia/Movie-Finder-bot/issues) on GitHub. I'll do my best to address your concerns promptly.
+For any questions, issues, or feedback related to the Movie Info Bot, please [open an issue](https://github.com/amitpatil321/telegram-imdb-rating-bot/issues) on GitHub. I'll do my best to address your concerns promptly.
 
 ## License 📝
-This project is licensed under the [MIT License](https://github.com/LorenzoLancia/Movie-Finder-bot/blob/main/LICENSE.txt).
+This project is licensed under the [MIT License](https://github.com/amitpatil321/telegram-imdb-rating-bot/blob/main/LICENSE.txt).
