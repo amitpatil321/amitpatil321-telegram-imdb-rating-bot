@@ -81,9 +81,10 @@ function getMovieList(movies) {
 }
 
 function moreMovieOptions(movie) {
-  console.log(
-    `https://www.justwatch.com/in/movie/${movie?.title?.replace(/ /g, "-")}`
-  );
+  const formattedTitle = movie?.title
+    ?.replace(/[^\w\s]/g, "")
+    .trim.replace(/\s+/g, "-")
+    .toLowerCase();
   return [
     [
       {
@@ -92,10 +93,7 @@ function moreMovieOptions(movie) {
       },
       {
         text: "Where to watch",
-        url: `https://www.justwatch.com/us/movie/${movie?.title?.replace(
-          / /g,
-          "-"
-        )}`,
+        url: `https://www.justwatch.com/us/movie/${formattedTitle}`,
       },
     ],
   ];
