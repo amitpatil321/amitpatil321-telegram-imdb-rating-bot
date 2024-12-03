@@ -20,7 +20,7 @@
 
 Looking for movie information on the go?
 
-Meet Meet [@movie_info2_bot](http://telegram.me/movie_info2_bot), a [Telegram](https://telegram.org/) bot that helps you quickly check basic movie information, such as IMDB rating, release date, genre, plot, images and videos!
+Meet [@movie_info2_bot](http://telegram.me/movie_info2_bot), a [Telegram](https://telegram.org/) bot that helps you quickly check basic movie information, such as IMDB rating, release date, genre, plot, images and videos!
 
 
 
