@@ -1,21 +1,21 @@
 # Movie Info Telegram Bot
 <p align="center">
-  <img height="150" src="logo.png">
+  <img height="150" src="logo.png" />
 </p>
 <p align="center">
   <strong>Find information about movies 🎬</strong>
 </p>
 
 <p align="center">
-  <a href="https://core.telegram.org/bots/api" target="_blank">
-  <img src="https://img.shields.io/badge/Telegram%20Bot%20API-Documentation-blue?style=flat-square&logo=telegram" alt="Telegram Bot API Documentation">
-</a>
-  <a href="https://nodejs.org/">
+  <a href="https://core.telegram.org/bots/api" target="_blank" style="text-decoration:none">
+    <img src="https://img.shields.io/badge/Telegram%20Bot%20API-Documentation-blue?style=flat-square&logo=telegram" alt="Telegram Bot API Documentation">
+  </a>
+  <a href="https://nodejs.org/" style="text-decoration:none">
     <img src="https://img.shields.io/badge/Node.js-Latest-green?style=flat-square&logo=node.js" alt="Node.js">
   </a>
-  <a href="https://github.com/yagop/node-telegram-bot-api" target="_blank">
-  <img src="https://img.shields.io/badge/node--telegram--bot--api-Documentation-blue?style=flat-square&logo=npm" alt="node-telegram-bot-api Documentation">
-</a>
+  <a href="https://github.com/yagop/node-telegram-bot-api" target="_blank" style="text-decoration:none">
+    <img src="https://img.shields.io/badge/node--telegram--bot--api-Documentation-blue?style=flat-square&logo=npm" alt="node-telegram-bot-api Documentation">
+  </a>
 </p>
 
 Looking for movie information on the go?
