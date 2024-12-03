@@ -83,8 +83,10 @@ function getMovieList(movies) {
 function moreMovieOptions(movie) {
   const formattedTitle = movie?.title
     ?.replace(/[^\w\s]/g, "")
-    .trim.replace(/\s+/g, "-")
+    .trim()
+    .replace(/\s+/g, "-")
     .toLowerCase();
+
   return [
     [
       {
